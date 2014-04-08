@@ -1,3 +1,7 @@
+Changes from 1.2 to 1.2.1
+- Added back i386 in fat binary for 32-bit iphone simulator
+Changes from 1.1 to 1.2
+- DBChooser fat binary now includes arm64
 Changes from 1.0 to 1.1
 - Updates DBChooser for iOS 7
 - Added a CHANGELOG
