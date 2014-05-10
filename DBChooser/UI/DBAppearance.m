@@ -61,10 +61,29 @@ static CGFloat BackBarButtonCapHeight = 0;
      forState:UIControlStateHighlighted
      barMetrics:UIBarMetricsLandscapePhone];
     
-    [[UINavigationBar appearance] setTitleTextAttributes:@{
-                               UITextAttributeTextColor : [UIColor whiteColor],
-                         UITextAttributeTextShadowColor : [[UIColor blackColor] colorWithAlphaComponent:0.9],
-                        UITextAttributeTextShadowOffset : [NSValue valueWithCGSize:CGSizeMake(0, -0.5)] }];
+    UIColor *textColor = [UIColor whiteColor];
+    UIColor *shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.9];
+    CGSize shadowOffset = CGSizeMake(0, -0.5);
+    
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    if (&NSForegroundColorAttributeName && &NSShadowAttributeName) {
+        [attributes setValue:textColor forKey:NSForegroundColorAttributeName];
+        
+        NSShadow *shadow = [[NSShadow alloc] init];
+        shadow.shadowColor = shadowColor;
+        shadow.shadowOffset = shadowOffset;
+        [attributes setValue:shadow forKey:NSShadowAttributeName];
+    } else {
+        // iOS 7 deprecations
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [attributes setValue:textColor forKey:UITextAttributeTextColor];
+        [attributes setValue:shadowColor forKey:UITextAttributeTextShadowColor];
+        [attributes setValue:[NSValue valueWithCGSize:shadowOffset] forKey:UITextAttributeTextShadowOffset];
+#pragma clang diagnostic pop
+    }
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
 }
 
 + (UIColor *)dropboxBlue {

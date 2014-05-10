@@ -130,8 +130,10 @@ static CGFloat kTitleWidthPadding = 20;
     CGFloat postTitleViewPadding = isPortrait ? [self padding2PortraitOverride] : [self padding2LandscapeOverride];
     CGFloat postSubtitleViewPadding = isPortrait ? [self padding3PortraitOverride] : [self padding3LandscapeOverride];
     CGFloat bottomPadding = isPortrait ? [self bottomPaddingPortraitOverride] : [self bottomPaddingLandscapeOverride];
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(edgeInsets.top + isPortrait ? [self topPaddingPortraitOverride] : [self topPaddingLandscapeOverride], 0, edgeInsets.bottom + bottomPadding, 0);
-
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(edgeInsets.top + (isPortrait ? [self topPaddingPortraitOverride] : [self topPaddingLandscapeOverride]),
+                                                  0,
+                                                  edgeInsets.bottom + bottomPadding,
+                                                  0);
 
     CGRect contentBounds = UIEdgeInsetsInsetRect(self.bounds, contentInsets);
     CGSize imageSize = [_button imageForState:UIControlStateNormal].size;
@@ -159,7 +161,6 @@ static CGFloat kTitleWidthPadding = 20;
         CGRect buttonFrame = _button.frame;
         buttonFrame.size = imageSize;
         _button.frame = buttonFrame;
-        totalHeight = contentBounds.size.height;
     } else {
         [_button sizeToFit];
     }
