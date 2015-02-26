@@ -54,7 +54,7 @@
             fromViewController:(UIViewController *)topViewController
                     completion:(DBChooserCompletionBlock)blk
 {
-    _completionBlock = blk; // save the block into the Chooser object
+    _completionBlock = [blk copy]; // save the block into the Chooser object
     
     NSURL *chooserURL = [[self class] dbc_chooserURLForAppKey:_appKey linkType:linkType];
     if ([[UIApplication sharedApplication] canOpenURL:chooserURL]) {
