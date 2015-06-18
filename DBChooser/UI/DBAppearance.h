@@ -23,4 +23,6 @@
 + (UIColor *)lightTextColor;
 + (UIColor *)buttonBorderColor;
 
++ (NSBundle *)getBundle;
++ (UIImage *)loadImageNamed:(NSString *)name fromBundle:(NSBundle *)bundle;
 @end

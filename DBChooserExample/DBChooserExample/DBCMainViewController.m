@@ -130,7 +130,7 @@ enum {
 
 - (UITableViewCell*)dbc_standardCellWithStyle:(UITableViewCellStyle)style
 {
-    NSString *reuseId = [NSString stringWithFormat:@"Cell-%d", style];
+    NSString *reuseId = [NSString stringWithFormat:@"Cell-%ld", (long)style];
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseId];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:style reuseIdentifier:reuseId];
