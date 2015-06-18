@@ -4,6 +4,7 @@
 //
 
 #import "DBChooserAppearance.h"
+#import "DBAppearance.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation DBChooserAppearance
@@ -12,22 +13,30 @@
 {
     static UIImage *appIconImage;
     if (appIconImage == nil) {
-        appIconImage = [UIImage imageNamed:@"DBChooser.bundle/app-icon"];
+        NSBundle *bundle = [DBAppearance getBundle];
+        appIconImage = [DBAppearance loadImageNamed:@"app-icon" fromBundle:bundle];
     }
     return appIconImage;
 }
 
 + (void)customizeButton:(Class<UIAppearance>)cls {
+    NSBundle *bundle = [DBAppearance getBundle];
     if (isIOS7()) {
         [[cls appearance] setTitleColor:[self dropboxBlue] forState:UIControlStateNormal];
         return;
-}
+    }
 
     UIEdgeInsets buttoninsets = UIEdgeInsetsMake(0, 5, 0, 5);
-    [[cls appearance] setBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_large_button"] resizableImageWithCapInsets:buttoninsets]
+    UIImage *blueLargeBtn = [DBAppearance loadImageNamed:@"blue_large_button"
+                                            fromBundle:bundle];
+    [[cls appearance] setBackgroundImage:[blueLargeBtn resizableImageWithCapInsets:buttoninsets]
                                 forState:UIControlStateNormal];
-    [[cls appearance] setBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_large_button_pressed"] resizableImageWithCapInsets:buttoninsets]
+
+    UIImage *blueLargeBtnPressed = [DBAppearance loadImageNamed:@"blue_large_button_pressed"
+                                              fromBundle:bundle];
+    [[cls appearance] setBackgroundImage:[blueLargeBtnPressed resizableImageWithCapInsets:buttoninsets]
                                 forState:UIControlStateHighlighted];
+    
 }
 
 + (void)customizeInstallButton:(UIButton*)btn withWidth:(CGFloat)width {
