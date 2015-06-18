@@ -38,6 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D1919551B32B7C500E6712C /* DBImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DBImages.xcassets; sourceTree = "<group>"; };
 		9B861A4C17716C3200CCB299 /* libDBChooser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDBChooser.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B861A4F17716C3200CCB299 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9B861A5317716C3200CCB299 /* DBChooser-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBChooser-Prefix.pch"; sourceTree = "<group>"; };
@@ -158,6 +159,7 @@
 		9BE7B470177179BE0058055E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4D1919551B32B7C500E6712C /* DBImages.xcassets */,
 				9BE7B46F177179910058055E /* DBChooser.bundle */,
 			);
 			name = Resources;
