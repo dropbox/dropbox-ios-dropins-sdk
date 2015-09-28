@@ -61,10 +61,14 @@ static CGFloat BackBarButtonCapHeight = 0;
      forState:UIControlStateHighlighted
      barMetrics:UIBarMetricsLandscapePhone];
     
+    NSShadow *shadow = [NSShadow new];
+    [shadow setShadowColor: [[UIColor blackColor] colorWithAlphaComponent:0.9]];
+    [shadow setShadowOffset: CGSizeMake(0.0f, -0.5f)];
+    
+    
     [[UINavigationBar appearance] setTitleTextAttributes:@{
-                               UITextAttributeTextColor : [UIColor whiteColor],
-                         UITextAttributeTextShadowColor : [[UIColor blackColor] colorWithAlphaComponent:0.9],
-                        UITextAttributeTextShadowOffset : [NSValue valueWithCGSize:CGSizeMake(0, -0.5)] }];
+                               NSForegroundColorAttributeName : [UIColor whiteColor],
+                               NSShadowAttributeName: shadow }];
 }
 
 + (UIColor *)dropboxBlue {
