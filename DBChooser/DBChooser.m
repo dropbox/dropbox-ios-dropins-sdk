@@ -112,7 +112,7 @@
     for (NSString *pair in [queryString componentsSeparatedByString:@"&"]) {
         NSArray *kv = [pair componentsSeparatedByString:@"="];
         if ([kv count] == 2) {
-            params[kv[0]] = [kv[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            params[kv[0]] = [kv[1] stringByRemovingPercentEncoding];
         }
     }
     return params;
@@ -171,7 +171,7 @@
         noDropboxModal.modalPresentationStyle = UIModalPresentationFormSheet;
     }
 
-    [topViewController presentModalViewController:noDropboxModal animated:YES];
+    [topViewController presentViewController:noDropboxModal animated:YES completion:nil];
 }
 
 - (void)dbc_completedWithResult:(NSArray*)results
