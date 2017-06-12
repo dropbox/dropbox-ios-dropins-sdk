@@ -17,54 +17,49 @@ static CGFloat BackBarButtonCapHeight = 0;
 
 + (void)customizeNavBarForContainer:(Class<UIAppearanceContainer>)cls {
     if (isIOS7()) {
-        [[UINavigationBar appearanceWhenContainedIn:cls, nil] setTintColor:[self dropboxBlue]];
+      [[UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[cls]] setTintColor:[self dropboxBlue]];
         return;
     }
 
     UIEdgeInsets navInsets = UIEdgeInsetsMake(NavBarCapHeight, NavBarCapWidth, NavBarCapHeight, NavBarCapWidth);
-    [[UINavigationBar appearanceWhenContainedIn:cls, nil]
+    [[UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[cls]]
      setBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/header"] resizableImageWithCapInsets:navInsets]
      forBarMetrics:UIBarMetricsDefault];
     UIEdgeInsets button_insets = UIEdgeInsetsMake(BarButtonCapHeight, BarButtonCapWidth, BarButtonCapHeight, BarButtonCapWidth);
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
-     setBackgroundImage:[UIImage imageNamed:@"DBChooser.bundle/blue_button"]
-     forState:UIControlStateNormal
-     barMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
-     setBackgroundImage:[UIImage imageNamed:@"DBChooser.bundle/blue_button_pressed"]
-     forState:UIControlStateHighlighted
-     barMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
-     setBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_button_landscape"] resizableImageWithCapInsets:button_insets]
-     forState:UIControlStateNormal
-     barMetrics:UIBarMetricsLandscapePhone];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
-     setBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_button_landscape_pressed"] resizableImageWithCapInsets:button_insets]
-     forState:UIControlStateHighlighted
-     barMetrics:UIBarMetricsLandscapePhone];
-    
-    UIEdgeInsets back_insets = UIEdgeInsetsMake(BackBarButtonCapHeight, BackBarButtonLeftCap, BackBarButtonCapHeight, BackBarButtonRightCap);
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
-     setBackButtonBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_back"] resizableImageWithCapInsets:back_insets]
-     forState:UIControlStateNormal
-     barMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
-     setBackButtonBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_back_pressed"] resizableImageWithCapInsets:back_insets]
-     forState:UIControlStateHighlighted
-     barMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
-     setBackButtonBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_back_button_landscape"] resizableImageWithCapInsets:back_insets]
-     forState:UIControlStateNormal
-     barMetrics:UIBarMetricsLandscapePhone];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
-     setBackButtonBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_back_button_landscape_pressed"] resizableImageWithCapInsets:back_insets]
-     forState:UIControlStateHighlighted
-     barMetrics:UIBarMetricsLandscapePhone];
+  
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class],cls]]
+     setBackgroundImage:[UIImage imageNamed:@"DBChooser.bundle/blue_button"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+  [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class],cls]]
+   setBackgroundImage:[UIImage imageNamed:@"DBChooser.bundle/blue_button_pressed"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+  [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class],cls]]
+   setBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_button_landscape"] resizableImageWithCapInsets:button_insets]
+   forState:UIControlStateNormal
+   barMetrics:UIBarMetricsCompact];
+  [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class],cls]]
+   setBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_button_landscape_pressed"] resizableImageWithCapInsets:button_insets]
+   forState:UIControlStateHighlighted
+   barMetrics:UIBarMetricsCompact];
+  UIEdgeInsets back_insets = UIEdgeInsetsMake(BackBarButtonCapHeight, BackBarButtonLeftCap, BackBarButtonCapHeight, BackBarButtonRightCap);
+  [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class],cls]]
+   setBackButtonBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_back"] resizableImageWithCapInsets:back_insets]
+   forState:UIControlStateNormal
+   barMetrics:UIBarMetricsDefault];
+  [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class],cls]]
+   setBackButtonBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_back_pressed"] resizableImageWithCapInsets:back_insets]
+   forState:UIControlStateHighlighted
+   barMetrics:UIBarMetricsDefault];
+  [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class],cls]]
+   setBackButtonBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_back_button_landscape"] resizableImageWithCapInsets:back_insets]
+   forState:UIControlStateNormal
+   barMetrics:UIBarMetricsCompact];
+  [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class],cls]]
+   setBackButtonBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_back_button_landscape_pressed"] resizableImageWithCapInsets:back_insets]
+   forState:UIControlStateHighlighted
+   barMetrics:UIBarMetricsCompact];
     
     NSShadow *shadow = [NSShadow new];
     [shadow setShadowColor: [[UIColor blackColor] colorWithAlphaComponent:0.9]];
     [shadow setShadowOffset: CGSizeMake(0.0f, -0.5f)];
-    
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{
                                NSForegroundColorAttributeName : [UIColor whiteColor],
